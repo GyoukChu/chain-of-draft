@@ -47,11 +47,3 @@ def trimmed_average(values: list[float], percentile: float) -> float:
     count = round(len(values) * percentile)
     trimmed = values[count : len(values) - count]
     return average(trimmed)
-
-
-def extract_number_from_string(s: str) -> Union[int, float]:
-    match = re.search(r"\d{1,3}(?:,\d{3})*(?:\.\d+)?", s)
-    if match:
-        number_str = match.group().replace(",", "")  # Remove commas
-        return float(number_str) if "." in number_str else int(number_str)
-    return None

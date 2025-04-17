@@ -3,23 +3,26 @@ import csv
 import os
 
 from llm_client import LLMClient
-from tasks.coin_flip import CoinFlip
-from tasks.date import DateUnderstanding
 from tasks.gsm8k import GSM8K
-from tasks.sports import SportsUnderstanding
+from tasks.math500 import MATH500
+from tasks.aime import AIME
 from utils import average, nth_percentile
 
 MODEL_MAPPING = {
     "gpt-4o": "gpt-4o-2024-08-06",
     "gpt-4o-mini": "gpt-4o-mini-2024-07-18",
-    "sonnet": "claude-3-5-sonnet-20240620",
-    "haiku": "claude-3-5-haiku-20241022",
+    "gpt-4.1": "gpt-4.1-2025-04-14",
+    "gpt-4.1-mini": "gpt-4.1-mini-2025-04-14",
+    "gpt-4.1-nano": "gpt-4.1-nano-2025-04-14",
+    "3.5-sonnet": "claude-3-5-sonnet-20241022",
+    "3.5-haiku": "claude-3-5-haiku-20241022",
+    "3.7-sonnet": "claude-3-7-sonnet-20250219",
 }
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--task", choices=["gsm8k", "date", "sports", "coin_flip"])
-    parser.add_argument("--model", default="claude3.5")
+    parser.add_argument("--task", choices=["gsm8k", "math500", "aime"])
+    parser.add_argument("--model", default="gpt-4.1-nano")
     parser.add_argument(
         "--prompt",
         choices=["baseline", "cod", "cot"],
@@ -48,12 +51,10 @@ if __name__ == "__main__":
     match args.task:
         case "gsm8k":
             task = GSM8K(llm_client)
-        case "date":
-            task = DateUnderstanding(llm_client)
-        case "sports":
-            task = SportsUnderstanding(llm_client)
-        case "coin_flip":
-            task = CoinFlip(llm_client)
+        case "math500":
+            task = MATH500(llm_client)
+        case "aime":
+            task = AIME(llm_client)
         case _:
             raise ValueError("Invalid task")
 

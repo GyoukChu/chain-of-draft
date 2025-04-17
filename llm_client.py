@@ -26,18 +26,18 @@ class LLMClient:
             response = message.content[0].text
             token_count = message.usage.output_tokens
         else:
-            completion = self.openai_client.chat.completions.create(
+            completion = self.openai_client.responses.create(
                 messages=[{"role": "user", "content": payload}],
                 model=model,
                 temperature=temperature,
-                max_tokens=max_tokens,
+                max_output_tokens=max_tokens,
             )
-            response = completion.choices[0].message.content
-            token_count = completion.usage.completion_tokens
+            response = completion.output_text
+            token_count = completion.usage.output_tokens
         return response, token_count
 
 
 if __name__ == "__main__":
     llm = LLMClient()
-    response, count = llm.request("hello", "claude-3-7-sonnet-latest")
+    response, count = llm.request("hello", "claude-3-7-sonnet-20250219")
     print(response, count)
