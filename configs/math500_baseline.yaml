@@ -1,0 +1,22 @@
+system_prompt: |
+  Answer the question directly with a number without unit. Return the answer within \boxed{}.
+  Do not return any preamble, explanation, or reasoning.
+format: |
+  Q: {question}
+  A: {answer}
+fewshot: 
+  - question: |
+      Find $n$ if $n\\cdot n! + n! = 720$, where $n! = n\\cdot (n-1)\\cdot (n-2)\\cdots 2\\cdot 1$.
+    answer: \boxed{5}
+  - question: | 
+      Evaluate\n\\[\\begin{vmatrix} \\cos \\alpha \\cos \\beta & \\cos \\alpha \\sin \\beta & -\\sin \\alpha \\\\ -\\sin \\beta & \\cos \\beta & 0 \\\\ \\sin \\alpha \\cos \\beta & \\sin \\alpha \\sin \\beta & \\cos \\alpha \\end{vmatrix}.\\]
+    answer: \boxed{1}
+  - question: |
+      Find all real solutions to\n\\[\\frac{1}{(x - 1)(x - 2)} + \\frac{1}{(x - 2)(x - 3)} + \\frac{1}{(x - 3)(x - 4)} = \\frac{1}{6}.\\]Enter all solutions, separated by commas.
+    answer: \boxed{7,-2}
+  - question:
+      Write the expression $\\frac{4+3c}{7}+2$ as a single fraction.
+    answer: \boxed{\frac{18+3c}{7}}
+  - question: |
+      An integer $n$ is said to be square-free if the only perfect square that divides $n$ is $1^2$. How many positive odd integers greater than 1 and less than $100$ are square-free?
+    answer: \boxed{40}

@@ -1,6 +1,6 @@
 system_prompt: |
   Think step by step to answer the following question.
-  Return the answer at the end of the response after a separator ####.
+  Return the answer at the end of the response within \boxed{}.
 format: |
   Q: {question}
   A: {answer}

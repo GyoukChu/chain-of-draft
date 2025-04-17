@@ -78,8 +78,8 @@ if __name__ == "__main__":
             nth_percentile(task.latency_tracker, 0.99),
         ],
     ]
-    for i in range(len(results[0])):
-        print(f"{results[0][i]}: {results[1][i]}")
+    # for i in range(len(results[0])):
+        # print(f"{results[0][i]}: {results[1][i]}")
 
     if not os.path.exists("./results"):
         os.makedirs("./results")

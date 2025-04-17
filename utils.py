@@ -16,7 +16,7 @@ class Config(BaseModel):
     fewshot: List[Example]
 
 
-def load_config(task: Literal["gsm8k", "date"], config: Literal["baseline", "cot", "cod"]) -> Config:
+def load_config(task: Literal["gsm8k", "math500", "aime"], config: Literal["baseline", "cot", "cod"]) -> Config:
     with open(f"./configs/{task}_{config}.yaml") as f:
         return Config.model_validate(yaml.safe_load(f))
 

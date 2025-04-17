@@ -20,7 +20,11 @@ class Task(ABC):
         pass
 
     @abstractmethod
-    def extract_answer(self, raw_response: str) -> any:
+    def extract_answer_from_data(self, raw_response: str) -> any:
+        pass
+
+    @abstractmethod
+    def extract_answer_from_response(self, raw_response: str) -> any:
         pass
 
     @abstractmethod
@@ -39,13 +43,16 @@ class Task(ABC):
         self.latency_tracker.append(end_time - start_time)
 
         # check result
-        predicted_answer = self.extract_answer(response)
-        expected_answer = self.extract_answer(example.answer)
+        predicted_answer = self.extract_answer_from_response(response)
+        expected_answer = self.extract_answer_from_data(example.answer)
         equal = self.equal(predicted_answer, expected_answer)
-        if not equal:
-            print(f"Example: {example.question}")
-            print(f"Expected: {expected_answer}, Predicted: {predicted_answer}")
-            print(f"Full response: {response}")
+
+        # Print result
+        print(f"QUESTION: {example.question}")
+        print(f"ANSWER: {expected_answer}")
+        print(f"FULL_RESPONSE: {response}")
+        print(f"PREDICTED: {predicted_answer}")
+        print(f"IS_CORRECT: {equal}")
         return equal
 
     def evaluate(self, model: str, config: Literal["baseline", "cot", "cod"], shot: int = None) -> float:

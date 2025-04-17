@@ -1,0 +1,34 @@
+Using data after 2021 is to avoid potential overlap with the MATH training set.
+
+즉, MATH training dataset에는 20년도 이하 문제가 있으니까.
+
+AIME 19, 20에서 few-shot을 가져오자.
+
+링크: https://artofproblemsolving.com/wiki/index.php/2019_AIME_I_Problems#Problem_3
+
+<<20에서 3개>>
+
+랜덤 인덱스: 9, 17, 28
+
+Part I 10번: Let $m$ and $n$ be positive integers satisfying the conditions
+
+$\quad\bullet\ \gcd(m+n,210)=1,$
+
+$\quad\bullet\ m^m$ is a multiple of $n^n,$ and
+
+$\quad\bullet\ m$ is not a multiple of $n.$
+
+Find the least possible value of $m+n.$
+
+Part II 3번: The value of $x$ that satisfies $\log_{2^x} 3^{20} = \log_{2^{x+3}} 3^{2020}$ can be written as $\frac{m}{n}$, where $m$ and $n$ are relatively prime positive integers. Find $m+n$.
+
+Part II 14번: For real number $x$ let $\lfloor x\rfloor$ be the greatest integer less than or equal to $x$, and define $\{x\} = x - \lfloor x \rfloor$ to be the fractional part of $x$. For example, $\{3\} = 0$ and $\{4.56\} = 0.56$. Define $f(x)=x\{x\}$, and let $N$ be the number of real-valued solutions to the equation $f(f(f(x)))=17$ for $0\leq x\leq 2020$. Find the remainder when $N$ is divided by $1000$.
+
+<<19에서 2개>>
+
+랜덤 인덱스: 7, 23
+
+Part I 8번: There are positive integers $x$ and $y$ that satisfy the system of equations\[\log_{10} x + 2 \log_{10} (\gcd(x,y)) = 60\]\[\log_{10} y + 2 \log_{10} (\text{lcm}(x,y)) = 570.\]Let $m$ be the number of (not necessarily distinct) prime factors in the prime factorization of $x$, and let $n$ be the number of (not necessarily distinct) prime factors in the prime factorization of $y$. Find $3m+2n$.
+
+Part II 9번: Call a positive integer $n$ $k$-pretty if $n$ has exactly $k$ positive divisors and $n$ is divisible by $k$. For example, $18$ is $6$-pretty. Let $S$ be the sum of the positive integers less than $2019$ that are $20$-pretty. Find $\tfrac{S}{20}$.
+

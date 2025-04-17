@@ -1,5 +1,5 @@
 system_prompt: |
-  Answer the question directly with a number without unit.
+  Answer the question directly with a number without unit. Return the answer within \boxed{}.
   Do not return any preamble, explanation, or reasoning.
 format: |
   Q: {question}

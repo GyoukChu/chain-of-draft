@@ -5,7 +5,7 @@ from math_verify import parse, verify
 
 from llm_client import LLMClient
 from tasks.base import Task
-from utils import Example, extract_number_from_string
+from utils import Example
 
 class GSM8K(Task):
     def __init__(self, llm: LLMClient):
@@ -17,13 +17,14 @@ class GSM8K(Task):
             data.append(Example.model_validate(example))
         return data
 
-    def extract_answer(self, raw_response: str) -> str:
+    def extract_answer_from_data(self, raw_response: str) -> str:
         # From original data -> expected_answer
         if "####" in raw_response:
             raw_response = raw_response.split("####")[1]
-            raw_response = raw_response.strip().replace(",", "").replace("$", "").replace("%", "")
-            return raw_response
-        
+        raw_response = raw_response.strip().replace(",", "").replace("$", "").replace("%", "")
+        return raw_response
+
+    def extract_answer_from_response(self, raw_response: str) -> str:
         # From response -> predicted_answer
         # From: https://github.com/EleutherAI/lm-evaluation-harness/blob/main/lm_eval/tasks/hendrycks_math/utils.py
         idx = raw_response.rfind("\\boxed")

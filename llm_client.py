@@ -14,7 +14,7 @@ class LLMClient:
         payload: str,
         model: str,
         temperature: float = 0.0,
-        max_tokens: int = 4096,
+        max_tokens: int = 8192,
     ) -> tuple[str, int]:
         if model.startswith("claude"):
             message = self.anthropic_client.messages.create(
@@ -27,7 +27,7 @@ class LLMClient:
             token_count = message.usage.output_tokens
         else:
             completion = self.openai_client.responses.create(
-                messages=[{"role": "user", "content": payload}],
+                input=[{"role": "user", "content": payload}],
                 model=model,
                 temperature=temperature,
                 max_output_tokens=max_tokens,
